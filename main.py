@@ -12,8 +12,9 @@ def show_pdf(file_path):
     pdf_display = f'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">'
     st.markdown(pdf_display, unsafe_allow_html=True)
 
-st.title('Summarize your recorded lectures!')
+st.title('gptLecture: Summarize your recorded lectures!')
 st.markdown('Harnessing the power of GPT to provide you the gist of the recorded lectures!')
+st.markdown('_A project submitted for iNTUition v9.0_')
 
 #summarize_button = None
 
