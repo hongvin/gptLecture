@@ -66,6 +66,8 @@ if submit_video_bttn:
                 st.markdown('Download the note in PDF!')
                 md2pdf('note.pdf',md_content=strings)
                 #show_pdf('note.pdf')
+                with open("note.pdf", "rb") as pdf_file:
+                    PDFbyte = pdf_file.read()
                 st.download_button(label="Download PDF Note!", 
                                     data=PDFbyte,
                                     file_name="note.pdf",
