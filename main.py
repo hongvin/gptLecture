@@ -50,24 +50,26 @@ if submit_video_bttn:
                     transcript_lines = file.readlines()
                 num_lines = len(transcript_lines)
 
-                colu1, colu2 = st.columns(2)
 
                 strings = ''
                 titles =f'#### {course_code} Lecture {lecture_num}: {lecture_name}'
                 strings+=titles
 
-                with colu1:
-                    st.markdown(titles)
-                    for parts in range(int(num_lines/30)+1):
-                        current_chunk = "".join(transcript_lines[parts*30:parts*30+30])
-                        current_summary = prompt_engineering(university,course_code,course_name,lecture_num,lecture_name,parts,current_chunk)
-                        strings+=current_summary
-                        st.markdown(current_summary)
+                st.markdown(titles)
+                for parts in range(int(num_lines/30)+1):
+                    current_chunk = "".join(transcript_lines[parts*30:parts*30+30])
+                    current_summary = prompt_engineering(university,course_code,course_name,lecture_num,lecture_name,parts,current_chunk)
+                    strings+=current_summary
+                    st.markdown(current_summary)
                 
-                with colu2:
-                    st.markdown('Download the note in PDF!')
-                    md2pdf('note.pdf',md_content=strings)
-                    show_pdf('note.pdf')
+
+                st.markdown('Download the note in PDF!')
+                md2pdf('note.pdf',md_content=strings)
+                #show_pdf('note.pdf')
+                st.download_button(label="Download PDF Note!", 
+                                    data=PDFbyte,
+                                    file_name="note.pdf",
+                                    mime='application/octet-stream')
 
     except Exception as e:
         st.error(f'Error: {e}',icon="🚨")
