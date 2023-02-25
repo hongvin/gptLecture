@@ -1,3 +1,4 @@
 md2pdf
 openai
 yt_dlp
+streamlit_extras
